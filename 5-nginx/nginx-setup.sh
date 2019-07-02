@@ -17,4 +17,6 @@ echo "Add nginx gpg key" \
 && sudo cp myapp.conf /etc/nginx/conf.d/ \
 && echo "Start nginx" \
 && sudo systemctl start nginx \
-&& sudo systemctl enable nginx
+&& sudo systemctl enable nginx \
+&& echo "SELINUX setup" \
+sudo setsebool httpd_can_network_connect on -P
