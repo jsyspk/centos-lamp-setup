@@ -19,4 +19,4 @@ echo "Add nginx gpg key" \
 && sudo systemctl start nginx \
 && sudo systemctl enable nginx \
 && echo "SELINUX setup" \
-sudo setsebool httpd_can_network_connect on -P
+&& sudo setsebool httpd_can_network_connect on -P
