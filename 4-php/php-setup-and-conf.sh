@@ -12,7 +12,6 @@ echo "Get & install remi repo" \
 && echo "Update php configuration" \
 && sudo sed -i 's/user = apache/user = nginx/g' /etc/php-fpm.d/www.conf \
 && sudo sed -i 's/group = apache/group = nginx/g' /etc/php-fpm.d/www.conf \
-#&& sudo cp php.ini.dev /etc/php.ini \
 && echo "Start php-fpm" \
 && sudo systemctl start php-fpm \
 && sudo systemctl enable php-fpm
