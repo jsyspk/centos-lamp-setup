@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 echo "Get & install remi repo" \
+&& sudo rpm -e remi-release-7.rpm \
 && sudo rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
-&& sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
 && echo "enable remi repo" \
 && sudo yum install -y yum-utils \
 && sudo yum-config-manager --enable remi-php73 \
