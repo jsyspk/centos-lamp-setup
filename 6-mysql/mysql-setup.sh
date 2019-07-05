@@ -14,4 +14,4 @@ echo "Install MySql" \
 && echo "Install expect to interactively secure installation" \
 && sudo yum install -y expect \
 && echo "Run secure installation script" \
-&& curl https://raw.githubusercontent.com/jsyspk/centos-lamp-setup/master/6-mysql/secure-installation.sh | bash $MYSQL_PASSWORD
+&& curl https://raw.githubusercontent.com/jsyspk/centos-lamp-setup/master/6-mysql/secure-installation.sh | expect $MYSQL_PASSWORD

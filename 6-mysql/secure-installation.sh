@@ -1,16 +1,37 @@
 #!/usr/bin/expect
-sudo spawn mysql_secure_installation \
-&& MYSQL_PASSWORD=`sudo grep 'temporary password' /var/log/mysqld.log | awk '{print $NF}'` \
-&& expect \"Enter current password for root:\" \
-&& send \"$MYSQL_PASSWORD\n\" \
-&& expect \"Change the password for root ?\" \
-&& send \"y\n\" \
-&& expect \"Remove anonymous users?\" \
-&& send \"y\n\" \
-&& expect \"Disallow root login remotely?\" \
-&& send \"y\n\" \
-&& expect \"Remove test database and access to it?\" \
-&& send \"y\n\" \
-&& expect \"Reload privilege tables now?\" \
-&& send \"y\n\" \
-&& echo "MySQL installation is complete"
+set password [lindex $argv 0]
+spawn mysql_secure_installation
+expect "Enter password for user root:"
+send "$password"
+send "\r"
+expect "New password:"
+send "Secret-2019"
+send "\r"
+expect "Re-enter new password:"
+send "Secret-2019"
+send "\r"
+expect "Change the password for root ? ((Press y|Y for Yes, any other key for No) :"
+send "y"
+send "\r"
+expect "New password:"
+send "Secret-2019"
+send "\r"
+expect "Re-enter new password:"
+send "Secret-2019"
+send "\r"
+expect "Do you wish to continue with the password provided?(Press y|Y for Yes, any other key for No) :"
+send "y"
+send "\r"
+expect "Remove anonymous users? (Press y|Y for Yes, any other key for No) :"
+send "y"
+send "\r"
+expect "Disallow root login remotely? (Press y|Y for Yes, any other key for No) :"
+send "y"
+send "\r"
+expect "Remove test database and access to it? (Press y|Y for Yes, any other key for No) :"
+send "y"
+send "\r"
+expect "Reload privilege tables now? (Press y|Y for Yes, any other key for No) :"
+send "y"
+send "\r"
+expect eof
