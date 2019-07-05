@@ -14,7 +14,9 @@ echo "Add nginx gpg key" \
 && echo "Install nginx" \
 && sudo yum -y install nginx \
 && echo "Add nginx conf files" \
-&& sudo cp myapp.conf /etc/nginx/conf.d/ \
+&& sudo wget https://raw.githubusercontent.com/jsyspk/centos-lamp-setup/master/4-nginx/app.conf \
+&& sudo cp app.conf /etc/nginx/conf.d/ \
+&& sudo rm app.conf \
 && echo "Start nginx" \
 && sudo systemctl start nginx \
 && sudo systemctl enable nginx \
