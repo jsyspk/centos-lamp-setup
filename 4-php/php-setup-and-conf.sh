@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-echo "Get & install remi repo" \
-&& sudo rpm -e remi-release-7.rpm \
-&& sudo rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
-&& echo "enable remi repo" \
+echo "Get & install remi repo"
+# sudo rpm -e remi-release-7.6-2.el7.remi.noarch
+sudo rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
+echo "enable remi repo" \
 && sudo yum install -y yum-utils \
 && sudo yum-config-manager --enable remi-php73 \
 && echo "Install php" \
