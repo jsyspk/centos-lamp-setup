@@ -1,7 +1,8 @@
 #!/usr/bin/expect
 sudo spawn mysql_secure_installation \
+&& MYSQL_PASSWORD=`sudo grep 'temporary password' /var/log/mysqld.log | awk '{print $NF}'` \
 && expect \"Enter current password for root:\" \
-&& send \"$1\n\" \
+&& send \"$MYSQL_PASSWORD\n\" \
 && expect \"Change the password for root ?\" \
 && send \"y\n\" \
 && expect \"Remove anonymous users?\" \
