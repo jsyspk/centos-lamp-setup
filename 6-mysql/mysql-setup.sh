@@ -11,4 +11,10 @@ echo "Install MySql" \
 && echo "Change Mysql password" \
 && MYSQL_PASSWORD=`sudo grep 'temporary password' /var/log/mysqld.log | awk '{print $NF}'` \
 && echo "Default password: "$MYSQL_PASSWORD \
+&& echo "Install expect to interactively secure installation" \
+&& sudo yum install -y expect \
+&& echo "Run secure installation script" \
+&& sudo spawn mysql_secure_installation \
+&& expect \"Enter current password for root:\" \
+&& send \"$MYSQL_PASSWORD\n\" \
 && mysql -u root -p$MYSQL_PASSWORD
